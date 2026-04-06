@@ -6,7 +6,7 @@ from memory_query import MemoryQuery
 
 def main():
     print("="*50)
-    print("DTAP 价值筛选演示（RGB-D 版）")  # 修改为 DTAP
+    print("DTAP 价值筛选演示（RGB-D 版）")  
     print("="*50)
 
     # 1. 构建记忆
