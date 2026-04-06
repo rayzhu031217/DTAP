@@ -41,12 +41,18 @@ Output your answer as a JSON with keys: "answer", "reasoning" (optional), "used_
             else:
                 try:
                     answer_json = json.loads(response)
+                    # 添加 used_memories
+                    used_ids = [m['id'] for m in self.context_memories]
+                    answer_json["used_memories"] = used_ids
                     return answer_json
                 except:
-                    return {"answer": response.strip()}
+                # 如果响应不是 JSON，直接返回文本
+                    used_ids = [m['id'] for m in self.context_memories]
+                    return {"answer": response.strip(), "used_memories": used_ids}
 
-        return {"answer": "Unable to answer within max iterations."}
-
+    # 循环结束仍未获得答案
+        used_ids = [m['id'] for m in self.context_memories]
+        return  {"answer": "Unable to answer within max iterations.", "used_memories": used_ids}
     def _execute_function(self, func_call):
         name = func_call['name']
         args = func_call['arguments']
