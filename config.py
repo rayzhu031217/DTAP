@@ -1,5 +1,7 @@
 import os
 
+DATA_SOURCE = 'r2r'
+
 # Milvus配置
 MILVUS_HOST = 'localhost'
 MILVUS_PORT = 19530
@@ -34,3 +36,18 @@ MAX_TOKENS = 200
 RETRIEVAL_K = 20            # 初次检索条数
 FINAL_K = 5                 # 重排序后保留条数
 MAX_ITERATIONS = 3          # 最大检索迭代次数
+
+DEPTH_SCALE = 0.001                     # TUM 数据集深度缩放因子（通常为0.001）
+MIN_CLIP_FRAMES = 5                      # 一个有效片段至少包含的帧数
+OBJECT_MAX_DISTANCE = 5.0                 # 物体检测的最大有效距离（米），用于深度过滤
+
+# R2R 相关配置
+R2R_JSON_PATH = 'data/R2R_train.json'   # R2R 数据集文件
+MP3D_DATA_DIR = '/path/to/mp3d'         # Matterport3D 场景文件夹
+MP3D_SCENE_LIST = ['17DRP5sb8fy', ...]  # 可选，限制场景列表
+
+# Habitat 仿真参数
+SIMULATOR_FRAME_WIDTH = 640
+SIMULATOR_FRAME_HEIGHT = 480
+SIMULATOR_SENSORS = ['rgb', 'depth']    # 必须包含 depth
+
